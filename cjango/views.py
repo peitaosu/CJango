@@ -5,3 +5,6 @@ from django.shortcuts import redirect
 
 def index(request):
     return render(request, "index.html")
+
+def chart(request):
+    return render(request, "charts.html")
