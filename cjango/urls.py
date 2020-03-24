@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index),
     url(r'^chart/$', views.chart),
+    url(r'^devtool(?P<action(/[a-z]*)*)', views.devtool),
 ]
