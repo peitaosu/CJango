@@ -1,74 +1,40 @@
-<!DOCTYPE html>
-<html>
+{% extends 'layout.html' %}
 
-<head>
-    {% load static %}
-    <link href="{% static 'bootstrap.min.css'%}" rel="stylesheet">
-    <link href="{% static 'light-bootstrap-dashboard-react.min.css'%}" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" type="text/javascript"></script>
-</head>
-
-<body>
-    <div id="sidebar" class="sidebar">
-        <div class="sidebar-background"></div>
-        <div class="logo">
-            </a><a href="#" class="simple-text logo-normal">CJango</a>
-        </div>
-        <div class="sidebar-wrapper">
-            <ul class="nav">
-                <li class="{{dashboard_active}}">
-                    <a class="nav-link {{dashboard_active}}" href="#">
-                    <p><i class="fa fa-line-chart"></i>Dashboard</p>
-                    </a>
-                </li>
-                <li class="{{devtool_active}}">
-                    <a class="nav-link {{devtool_active}}" href="/devtool">
-                    <p><i class="fa fa-terminal"></i>DevTool</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="main-panel" id="main-panel">
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">DevTool - SQL</h4>
-                                <p class="category">Query data from database.</p>
-                            </div>
-                            <div class="content">
-                                <form method="post" name="query" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <input class="form-control" name="query_sql" value="{{ query_sql }}"></input>
-                                    </div>
-                                    <button type="submit" class="btn btn-info btn-fill pull-right" formaction="/devtool/query">SQL!</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">DevTool - SQL</h4>
+                    <p class="category">Query data from database.</p>
                 </div>
-                {% if query_result %}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Query Result</h4>
-                            </div>
-                            <div class="content">
-                                <pre><code>{{ query_result }}</code></pre>
-                            </div>
+                <div class="content">
+                    <form method="post" name="query" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input class="form-control" name="query_sql" value="{{ query_sql }}"></input>
                         </div>
-                    </div>
+                        <button type="submit" class="btn btn-info btn-fill pull-right" formaction="/devtool/query">SQL!</button>
+                    </form>
                 </div>
-                {% endif %}
             </div>
         </div>
     </div>
-</body>
+    {% if query_result %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Query Result</h4>
+                </div>
+                <div class="content">
+                    <pre><code>{{ query_result }}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
 
-</html>
+{% endblock %}
