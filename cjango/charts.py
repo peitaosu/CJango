@@ -1,9 +1,9 @@
 class ChartDataset():
     def __init__(self, label, data, backgroundColor, borderColor):
-        self.label = ""
-        self.data = []
-        self.backgroundColor = []
-        self.borderColor = []
+        self.label = label
+        self.data = data
+        self.backgroundColor = backgroundColor
+        self.borderColor = borderColor
     
     def export(self):
         return {
@@ -19,14 +19,14 @@ class ChartOptions():
     
     def export(self):
         return {
-            "maintainAspectRatio" = maintainAspectRatio
+            "maintainAspectRatio": self.maintainAspectRatio
         }
 
 class Chart():
     def __init__(self):
         self.type = "bar"
         self.data = {
-            "labels": []
+            "labels": [],
             "datasets": []
         }
         self.options = {}
