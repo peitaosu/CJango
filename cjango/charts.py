@@ -34,6 +34,9 @@ class Chart():
     def add_dataset(self, dataset):
         self.data["datasets"].append(dataset)
     
+    def set_labels(self, labels):
+        self.data["labels"] = labels
+    
     def update_options(self, options):
         self.options.update(options)
 
