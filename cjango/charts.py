@@ -47,3 +47,10 @@ class Chart():
             "options": self.options
         }
 
+class BarChart(Chart):
+    def __init__(self):
+        self.type = "bar"
+
+class PieChart(Chart):
+    def __init__(self):
+        self.type = "pie"
