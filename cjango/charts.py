@@ -54,3 +54,7 @@ class BarChart(Chart):
 class PieChart(Chart):
     def __init__(self):
         self.type = "pie"
+
+class DoughnutChart(Chart):
+    def __init__(self):
+        self.type = "doughnut"
